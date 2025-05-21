@@ -1,3 +1,7 @@
+// Extracting numbers by considering , and \n delimiters will be used
+const extractNumbers = (str: string) =>
+	str.split(/([,\n])/).filter((_, index) => index % 2 === 0);
+
 // Add method will return sum of valid numbers. Else it'll return error message if not valid numbers or negative numbers in input string.
 export const add = (inputString: string): any => {
 	if (inputString.length === 0) return 0;
@@ -6,7 +10,7 @@ export const add = (inputString: string): any => {
 	let isInvalidNumber: boolean = false;
 	let sum = 0;
 
-	inputString.split(',').map((num: string) => {
+	extractNumbers(inputString).map((num: string) => {
 		const parsedNumber = parseInt(num);
 
 		if (Number.isNaN(parsedNumber)) {
