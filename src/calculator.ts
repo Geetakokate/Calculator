@@ -1,16 +1,31 @@
-const isNumber = (str: string): boolean => {
-	console.info(str, '1');
-	if (typeof str != 'string') return false;
-
-	return str.length > 0 && !isNaN(parseInt(str, 10));
-};
-
-export const add = (inputString: string): number => {
+// Add method will return sum of valid numbers. Else it'll return error message if not valid numbers or negative numbers in input string.
+export const add = (inputString: string): any => {
 	if (inputString.length === 0) return 0;
 
-	const sum: number = inputString
-		.split(',')
-		.reduce((sum: number, num: string): number => sum + parseInt(num), 0);
+	let negativeNumbers: number[] = [];
+	let isInvalidNumber: boolean = false;
+	let sum = 0;
 
-	return sum >= 0 ? sum : -1;
+	inputString.split(',').map((num: string) => {
+		const parsedNumber = parseInt(num);
+
+		if (Number.isNaN(parsedNumber)) {
+			isInvalidNumber = true;
+			return;
+		} else {
+			if (parsedNumber < 0) {
+				negativeNumbers.push(parsedNumber);
+			} else {
+				sum += parsedNumber;
+			}
+		}
+	});
+
+	if (isInvalidNumber) return 'Not a valid number';
+
+	if (negativeNumbers.length > 0) {
+		return `Negative numbers not allowed ${negativeNumbers.join()}`;
+	} else {
+		return sum;
+	}
 };
