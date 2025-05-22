@@ -30,9 +30,8 @@ function App() {
         <input style={{marginRight: '10px'}} id='inputNumber' placeholder='Enter numbers'></input>   
         <button onClick={() => calculate('add')}>Calculate</button>
       </div>
-      <div>
+      <sub>Change delimiter pattern is: <span>//[delimiter] [numbers…]</span></sub>
       { addition && <p>{addition}</p> }
-      </div>
     </div>
   );
 }
