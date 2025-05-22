@@ -1,4 +1,4 @@
-import { add } from '../calculator';
+import add from './calculator';
 
 describe('Calculator', () => {
 	describe('add numbers', () => {
