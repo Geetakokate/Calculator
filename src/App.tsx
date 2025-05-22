@@ -2,21 +2,37 @@ import { useState } from 'react';
 import './App.css';
 import add from './components/calculator';
 
+//TODO: Improve folder structure and shift code suitable component. App should be clean
 function App() {
+  //TODO: change var names as result if enhancing more 
   const [addition, setAddition] = useState('');
 
-  const calculate = () => {
+  //TODO: this function is flexible enough to add more cases like substract, multiply
+  const calculate = (type: string) => {
     const element = document.getElementById('inputNumber') as HTMLInputElement
+
     if ( element && element.value !== null){
-      setAddition(add(element.value));
+      switch(type){
+        case 'add':
+          setAddition(add(element.value));
+          break;
+        default:
+          break
+      }
+      ;
     }
   }
 
   return (
-    <div>
-      <input id='inputNumber' placeholder='Enter numbers'></input>
-      <button onClick={calculate}>Calculate</button>
-      { addition && <span>{addition}</span> }
+    //TODO: styles can be shifted to assets
+    <div style={{margin: '10px'}}>
+      <div style={{paddingRight: '10px', display: 'flex'}}>
+        <input style={{marginRight: '10px'}} id='inputNumber' placeholder='Enter numbers'></input>   
+        <button onClick={() => calculate('add')}>Calculate</button>
+      </div>
+      <div>
+      { addition && <p>{addition}</p> }
+      </div>
     </div>
   );
 }

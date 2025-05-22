@@ -1,4 +1,5 @@
-import add from './calculator';
+import React from 'react';
+import add from '../calculator';
 
 describe('Calculator', () => {
 	describe('add numbers', () => {
@@ -7,19 +8,19 @@ describe('Calculator', () => {
 		});
 
 		test('should return addition of two valid numbers', () => {
-			expect(add('1,2')).toBe(3);
+			expect(add('1,2')).toBe('Addition is 3');
 		});
 
 		test('should return addition of multiple numbers', () => {
-			expect(add('1,2,3,4,5')).toBe(15);
+			expect(add('1,2,3,4,5')).toBe('Addition is 15');
 		});
 
 		test('should return addition of valid numbers if delimiter is \n', () => {
-			expect(add('1\n2,3')).toBe(6);
+			expect(add('1\n2,3')).toBe('Addition is 6');
 		});
 
 		test('it should return addition of given number with user provided delimiter', () => {
-			expect(add('//;\n1;2')).toBe(3);
+			expect(add('//;\n1;2')).toBe('Addition is 3');
 		});
 
 		test('it show error if negative numbers', () => {
